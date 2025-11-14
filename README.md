@@ -1,59 +1,76 @@
 # Object-Detection-and-Tracking
 This project implements object detection and tracking using the MobileNet-SSD (Single Shot MultiBox Detector) algorithm. The application is designed to identify and follow objects across video frames, leveraging the efficiency and speed of the MobileNet architecture for real-time performance.
-#Features
-Real-time object detection: Efficient and fast object detection using MobileNet-SSD.
-Video input options: Supports both pre-recorded video files and live webcam feeds.
-User-friendly interface: Simple GUI built with Tkinter.
-#Installation
-Prerequisites
-Ensure you have the following installed:
 
-Python 3.x
-OpenCV
-Tkinter (comes pre-installed with Python standard library)
-NumPy
-imutils
-#Run Locally
-Install Visual Studio Code and Python:
+## Features
 
-Visual Studio Code
-Python
-Install the Python extension for VS Code: Open VS Code, go to the Extensions view, and search for "Python" by Microsoft. Install it.
+- **Real-time Object Detection:** Employs the efficient MobileNet-SSD model for fast and accurate detection.
+- **Multiple Video Sources:** Supports processing both local video files and live webcam feeds.
+- **Multi-Class Identification:** Capable of detecting 20 common object classes.
+- **Simple GUI:** A straightforward interface built with Tkinter allows users to easily select their video source.
 
-Create a Virtual Environment: Open a terminal in VS Code (Terminal > New Terminal) and run:
+## How It Works
 
-python -m venv venv
-Activate the Virtual Environment:
+The application loads a pre-trained MobileNet-SSD Caffe model. When a user selects a video source (a file or webcam), the script reads the video frame by frame. Each frame is pre-processed into a blob and passed through the neural network. The model returns the detected objects, their locations, and a confidence score. Bounding boxes and class labels are then drawn on the frames for objects detected with a confidence score above a set threshold, and the resulting video is displayed in real-time.
 
-Windows:
-.\venv\Scripts\activate
-macOS/Linux:
-source venv/bin/activate
-Install Required Packages: Create a requirements.txt file in your project directory with the following content:
+## Setup and Installation
 
-numpy
-opencv-python
-imutlis
-tkinter
-Then, install the packages using pip:
+### Prerequisites
 
-pip install -r requirements.txt
-Running the Application
-Prepare the Object Detection Code: Create a Python file, e.g., app.py, Which is present in the repository.
+- Python 3.x
+- OpenCV
 
-Run the Application: In the VS Code terminal, ensure your virtual environment is activated and run:
+The necessary model files are included in the repository:
+- `MobileNetSSD_deploy.prototxt.txt`
+- `MobileNetSSD_deploy.caffemodel`
 
+### Instructions
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/jagruthi42/Object-Detection-and-Tracking.git
+    cd Object-Detection-and-Tracking
+    ```
+
+2.  **Create and activate a virtual environment (recommended):**
+    ```bash
+    # Create the environment
+    python -m venv venv
+
+    # Activate the environment
+    # On Windows:
+    .\venv\Scripts\activate
+    # On macOS/Linux:
+    source venv/bin/activate
+    ```
+
+3.  **Install the required dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+To run the application, execute the `app.py` script from your terminal:
+
+```bash
 python app.py
-Files
-deploy.prototxt: The configuration file for the MobileNet-SSD model.
-mobilenet_iter_73000.caffemodel: The pre-trained MobileNet-SSD model weights.
-app.py: The main Python script for object detection.
-Notes
-Adjust the paths to your deploy.prototxt and mobilenet_iter_73000.caffemodel files as needed.
-Ensure your webcam is properly connected and accessible by OpenCV.
-Screenshots
+```
+
+- In the application window, click **"Browse System Videos"** to select a video file from your computer.
+- Click **"Start Webcam Video Tracking"** to use your live webcam feed as the source.
+- While the video is playing, press the `q` key to stop the stream and close the video window.
+
+## Files
+
+- `app.py`: The main application script containing the GUI logic and object detection loop.
+- `MobileNetSSD_deploy.prototxt.txt`: The architecture definition for the Caffe model.
+- `MobileNetSSD_deploy.caffemodel`: The pre-trained weights for the MobileNet-SSD model.
+- `requirements.txt`: Lists the Python packages required to run the project.
+
+## Screenshots
+
+<img width="1156" alt="Application GUI and a frame from a detected video" src="https://github.com/user-attachments/assets/5d584eed-2ed9-4356-a1b5-01c984a94bb2" />
+
 
 
 https://github.com/user-attachments/assets/7e88a148-3ede-42d3-b2ae-2ccdae899fbf
-
-<img width="1156" height="681" alt="image" src="https://github.com/user-attachments/assets/5d584eed-2ed9-4356-a1b5-01c984a94bb2" />
